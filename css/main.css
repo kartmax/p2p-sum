@@ -1,0 +1,140 @@
+/* USER VARIABLES SECTION */
+
+:root {
+	--accent: orange;
+	--fontsize: 16px;
+	--textcolor: #333;
+	--lineheight: 1.65;
+	--userfont: roboto-st, sans-serif;
+	--systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+/* BOOTSTRAP SETTINGS SECTION */
+
+/* gutter 20px (10px + 10px). Comment this code for default gutter start at 1.5rem (24px) wide. */
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { --bs-gutter-x: .625rem; }
+.row, .row > * { --bs-gutter-x: 1.25rem; }
+
+/* FONTS LOAD SECTION */
+
+@font-face { src: url("../fonts/roboto-regular-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 400; font-style: normal; }
+@font-face { src: url("../fonts/roboto-italic-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 400; font-style: italic; }
+@font-face { src: url("../fonts/roboto-bold-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 700; font-style: normal; }
+@font-face { src: url("../fonts/roboto-bolditalic-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 700; font-style: italic; }
+
+/* GENERAL CSS SETTINGS */
+
+::placeholder { color: #666; }
+::selection { background-color: var(--accent); color: #fff; }
+input, textarea { outline: none; }
+input:focus:required:invalid, textarea:focus:required:invalid { border-color: red; }
+input:required:valid, textarea:required:valid { border-color: green; }
+
+body {
+	font-family: var(--userfont);
+	font-size: var(--fontsize);
+	line-height: var(--lineheight);
+	color: var(--textcolor);
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+}
+
+/* USER STYLES */
+
+.image {
+	max-width: 100%;
+	margin-bottom: var(--bs-gutter-x);
+	border-radius: 4px;
+}
+
+.accent {
+	color: var(--accent);
+	font-weight: bold;
+}
+
+.container-table {
+   overflow-x: auto;
+   padding-top: 30px;
+   padding-bottom: 30px;
+}
+
+/* table */
+table {
+   margin: 0 auto;
+   text-align: center;
+   border-collapse: collapse;
+   border: 1px solid #d4d4d4;
+ }
+  
+ tr:nth-child(even) {
+   background: rgba(0, 0, 0, .05);
+ }
+  
+ th, td {
+   padding: 10px 30px;
+ }
+  
+ th {
+   border-bottom: 1px solid #d4d4d4;
+ }  
+
+
+ /* form_file */
+ .form_file {
+   margin-top: 30px;
+   margin-bottom: 30px;
+ }
+
+ /* input file */
+ .input__wrapper {
+   width: 100%;
+   position: relative;
+   margin: 15px 0;
+   text-align: center;
+ }
+  
+ .input__file {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+ }
+  
+ .input__file-icon-wrapper {
+   height: 60px;
+   width: 60px;
+   margin-right: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-right: 1px solid #fff;
+ }
+  
+ .input__file-button-text {
+   line-height: 1;
+   margin-top: 1px;
+ }
+  
+ .input__file-button {
+   width: 100%;
+   max-width: 290px;
+   height: 60px;
+   background: #1bbc9b;
+   color: #fff;
+   font-size: 1.125rem;
+   font-weight: 700;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
+   -webkit-box-pack: start;
+       -ms-flex-pack: start;
+           justify-content: flex-start;
+   border-radius: 3px;
+   cursor: pointer;
+   margin: 0 auto;
+ }
+
+
