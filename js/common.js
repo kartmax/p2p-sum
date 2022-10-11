@@ -3,20 +3,30 @@ document.addEventListener('DOMContentLoaded', function() {
    const choice_file = document.forms.form_file.elements.file;
 
    choice_file.addEventListener('change', (e) => {
-      
-      async function start () {
-         const name_choice_file = e.target.files[0].name,
-               pach_choice_file = `csv/${name_choice_file}`;
-         // console.log();
 
-         const data = await fetch(pach_choice_file, {})
-                     .then((res) => {
-                        return res.text()
-                     })
-         renderResult(resultTransactions(data))
-
+      readFile = function () {
+         var reader = new FileReader();
+         reader.onload = function () {
+            let data = reader.result;
+            renderResult(resultTransactions(data))
+         };
+         reader.readAsBinaryString(e.target.files[0]);
       };
-      start();
+      readFile();
+
+
+      
+      // async function start () {
+      //    const name_choice_file = e.target.files[0].name,
+      //          pach_choice_file = `csv/${name_choice_file}`;
+
+      //    const data = await fetch(pach_choice_file, {})
+      //                .then((res) => {
+      //                   return res.text()
+      //                })
+      //    renderResult(resultTransactions(data))
+      // };
+      // start();
       
       
       // $.ajax({
