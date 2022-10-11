@@ -2,38 +2,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
    const choice_file = document.forms.form_file.elements.file;
 
+   let data = null;
    choice_file.addEventListener('change', (e) => {
 
       readFile = function () {
          var reader = new FileReader();
          reader.onload = function () {
-            let data = reader.result;
+            data = reader.result;
             renderResult(resultTransactions(data))
          };
-         reader.readAsBinaryString(e.target.files[0]);
+         if(e.target.files[0]) {
+            reader.readAsBinaryString(e.target.files[0]);
+         }
       };
       readFile();
-
-
-      
-      // async function start () {
-      //    const name_choice_file = e.target.files[0].name,
-      //          pach_choice_file = `csv/${name_choice_file}`;
-
-      //    const data = await fetch(pach_choice_file, {})
-      //                .then((res) => {
-      //                   return res.text()
-      //                })
-      //    renderResult(resultTransactions(data))
-      // };
-      // start();
-      
-      
-      // $.ajax({
-      //    url: pach_choice_file,
-      //    dataType: 'text',
-      //  }).done(data => renderResult(resultTransactions(data)));
-
+      btn_save_file.classList.add('active');
    });
 
     function resultTransactions (data) {
@@ -76,6 +59,30 @@ document.addEventListener('DOMContentLoaded', function() {
       resultElem.innerHTML = '';
       resultElem.append(table);
     };
+
+   //  SAVE RESULT IN CSV-FILE
+    const btn_save_file = document.querySelector('#save_file');
+    btn_save_file.addEventListener('click', func_save_file);
+    function func_save_file() {
+      let resultCSV = CSV(resultTransactions(data));
+      var blob = new Blob([ resultCSV ],
+               //  { type: "text/plain;charset=utf-8" });
+                { type: "csv" });
+      saveAs(blob, "result.csv");
+    }
+
+    function CSV (resultObj) {
+      let resultCSV = 'ID,VALUE\n';
+      for(let key in resultObj) {
+         if(key !== 'undefined') {
+            resultCSV += key + ',' + resultObj[key] + "\n";
+         }
+      }
+      return resultCSV;
+    }
+
+
+
 
 })
 
